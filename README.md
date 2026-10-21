@@ -2,12 +2,12 @@
 
 [![Java 21](https://img.shields.io/badge/Java-21-%23ED8B00?logo=openjdk&logoColor=white)](https://openjdk.org/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.1.1-%236DB33F?logo=springboot&logoColor=white)](https://spring.io/projects/spring-boot)
-[![Tests](https://img.shields.io/badge/tests-56%20passed-brightgreen)](https://github.com/xiugudesu/-/actions)
-[![CI](https://github.com/xiugudesu/-/actions/workflows/ci.yml/badge.svg)](https://github.com/xiugudesu/-/actions/workflows/ci.yml)
-[![GitHub](https://img.shields.io/badge/GitHub-xiugudesu%2F--181717?logo=github)](https://github.com/xiugudesu/-)
+[![Tests](https://img.shields.io/badge/tests-56%20passed-brightgreen)](https://github.com/xiugudesu/yinjie/actions)
+[![CI](https://github.com/xiugudesu/yinjie/actions/workflows/ci.yml/badge.svg)](https://github.com/xiugudesu/yinjie/actions/workflows/ci.yml)
+[![GitHub](https://img.shields.io/badge/GitHub-xiugudesu%2Fyinjie-181717?logo=github)](https://github.com/xiugudesu/yinjie)
 
 > 浏览器里的电吉他指板工具：**看音阶、练 CAGED、点品格识别和弦**。
-> 仓库地址：<https://github.com/xiugudesu/->
+> 仓库地址：<https://github.com/xiugudesu/yinjie>
 
 **yinjie** 是一个用 **Java 21 + Spring Boot** 跑在浏览器里的电吉他工具：左侧是可切换调式/音阶的指板音阶地图（含 CAGED 把位图），右侧在指板上点选品格后**实时识别和弦**（根音、性质、转位、斜杠低音、缺失/额外音、替代和弦），并可一键扫弦试听。支持音阶/和弦两种模式、6 种常用调弦与自定义特殊调弦。
 
@@ -33,7 +33,7 @@
 ## 获取项目
 
 ```bash
-git clone https://github.com/xiugudesu/-.git yinjie
+git clone https://github.com/xiugudesu/yinjie.git
 cd yinjie
 ```
 
@@ -282,7 +282,7 @@ msedge --headless=new --remote-debugging-port=9223 --user-data-dir=%TEMP%\yinjie
 - 移除 `js/app.js` canvas 指板逐音符 `shadowBlur`（仅保留琴板/琴枕 2 处单次阴影）；
 - 实测鼠标悬停扫动帧间隔 **59–64ms（约 15fps、154–156 个 >32ms 卡顿帧）→ 稳定 16.7ms（60fps、0 卡顿帧）**；测量脚本 `verify/frontend-blue/perf-probe.mjs`；
 - 回归全部通过：REST 冒烟 174 项、浏览器交互 13 + 26 项、主题专检 40 项；
-- 视觉代价是失去「毛玻璃」观感，面板仍为半透明白、背景线稿更清晰。
+- 视觉代价是失去「毛玻璃」观感，面板仍为半透明白。
 
 **启动脚本修复（`启动yinjie.bat`）**
 
@@ -294,7 +294,7 @@ msedge --headless=new --remote-debugging-port=9223 --user-data-dir=%TEMP%\yinjie
 ### v1.0.0 — 2026-10-20（独立化与浅色主题）
 
 - 项目从早期 Python/Tkinter 原型（FretBoard-Trainer）独立：Java 包名 `com.yinjie`、启动类 `YinjieApplication`、Maven 坐标 `com.yinjie:yinjie:1.0.0`、应用名 `yinjie`，代码与文档不再依赖原项目；
-- 前端由暗色改为浅色冰蓝绿主题：全页 `muse.png` 线稿背景 + 半透明白面板，canvas 画布与 CAGED 五色同步；原图 `background/20260110_003715.jpg` 处理为透明 PNG 打包内置，无外部图片依赖；
+- 前端由暗色改为浅色冰蓝绿主题：半透明面板 + 浅薄荷画布，canvas 与 CAGED 五色同步；
 - 新增独立发布：`tools/build-dist.ps1` 生成 `dist/yinjie-1.0.0.zip`（jar + 启动脚本 + README + docs），解压双击 `启动yinjie.bat` 即可运行，无需 Maven、无需源码；
 - 验证：56 个 JUnit 测试、REST 冒烟 174 项、浏览器交互 13 + 26 项、主题专检 40 项、独立验收 PASS。
 
