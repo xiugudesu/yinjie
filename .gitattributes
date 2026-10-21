@@ -1,0 +1,13 @@
+# 统一换行：源码文本按 LF 入库，检出时交给各平台
+* text=auto
+
+# 启动脚本按中文 Windows 的 ANSI/GBK + CRLF 保存，必须逐字节保留，禁止任何换行/编码转换
+*.bat -text
+*.cmd -text
+
+# 二进制资源
+*.jar binary
+*.zip binary
+*.png binary
+*.jpg binary
+*.jpeg binary

@@ -1,0 +1,71 @@
+{
+  "url": "http://127.0.0.1:8093/",
+  "when": "2026-10-20T13:37:57.303Z",
+  "failures": 0,
+  "results": [
+    {
+      "name": "页面加载完成并连上后端",
+      "status": "PASS",
+      "detail": "sub=\"自然大调（Ionian） · 根音 C · 0–24 品 · 音阶模式\" badge=\"已连接\""
+    },
+    {
+      "name": "音阶面板显示 C 自然大调",
+      "status": "PASS",
+      "detail": "自然大调（Ionian）"
+    },
+    {
+      "name": "音阶音名 chips 渲染",
+      "status": "PASS",
+      "detail": "C1,D2,E3,F4,G5,A6,B7"
+    },
+    {
+      "name": "级数公式 chips 渲染",
+      "status": "PASS",
+      "detail": "1 2 3 4 5 6 7"
+    },
+    {
+      "name": "切换到 Dorian 调式后重新加载",
+      "status": "PASS",
+      "detail": "多利亚调式（Dorian） / 多利亚调式（Dorian） · 根音 C · 0–24 品 · 音阶模式"
+    },
+    {
+      "name": "根音切换为 Eb 后指板重绘",
+      "status": "PASS",
+      "detail": "自然大调（Ionian） · 根音 Eb · 0–24 品 · 音阶模式"
+    },
+    {
+      "name": "鼠标点选 x32010 识别为 C 大三和弦（含指型提示）",
+      "status": "PASS",
+      "detail": "已选 5 个音 · C 自然大调（Ionian）"
+    },
+    {
+      "name": "展示原位/转位信息",
+      "status": "PASS"
+    },
+    {
+      "name": "和弦面板截图已保存",
+      "status": "PASS",
+      "detail": "D:\\STUDY\\code\\yinjie\\verify\\verifier-v3\\cdp-out311\\ui-c-major-chord.png"
+    },
+    {
+      "name": "Esc 清空选择",
+      "status": "PASS",
+      "detail": "尚未选择音"
+    },
+    {
+      "name": "键盘空格选择品格",
+      "status": "PASS",
+      "detail": "已选 1 个音 · C 自然大调（Ionian）"
+    },
+    {
+      "name": "音阶外音 / 等宽模式切换截图已保存",
+      "status": "PASS",
+      "detail": "D:\\STUDY\\code\\yinjie\\verify\\verifier-v3\\cdp-out311\\ui-nonscale-equal.png"
+    },
+    {
+      "name": "无 console 错误 / 未捕获异常",
+      "status": "PASS"
+    }
+  ],
+  "consoleErrors": []
+}

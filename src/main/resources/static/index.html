@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="yinjie 音阶指板工坊：电吉他音阶可视化与和弦识别工具。">
+  <title>yinjie · 音阶指板工坊</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%23eef8f5'/%3E%3Cpath%20d='M32%208c10%200%2017%207%2017%2016%200%207-5%2012-5%2018%200%208-5%2012-12%2012s-12-4-12-12c0-6-5-11-5-18%200-9%207-16%2017-16z'%20fill='%230f766e'/%3E%3Cpath%20d='M18%2026h28M19%2033h26M21%2040h22M24%2047h16'%20stroke='%23f4fcf9'%20stroke-width='2.4'%20stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div class="muse-decor" aria-hidden="true"></div>
+  <a class="skip-link" href="#fretboard">跳到指板</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-logo" aria-hidden="true">
+          <svg viewBox="0 0 44 44" role="img" focusable="false">
+            <defs>
+              <linearGradient id="pickGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#14b8a6"></stop>
+                <stop offset="100%" stop-color="#0f766e"></stop>
+              </linearGradient>
+            </defs>
+            <path d="M22 3.5c7.6 0 13.2 5.4 13.2 12.4 0 5.5-3.9 9.6-3.9 14.4 0 6.4-4 10.2-9.3 10.2s-9.3-3.8-9.3-10.2c0-4.8-3.9-8.9-3.9-14.4C8.8 8.9 14.4 3.5 22 3.5Z" fill="url(#pickGrad)"></path>
+            <path d="M12.6 19.5h18.8M13.2 24.4h17.6M14.4 29.3h15.2M16.2 34.2h11.6" stroke="#f4fcf9" stroke-width="1.7" stroke-linecap="round" opacity=".92"></path>
+            <circle cx="22" cy="15.4" r="2.2" fill="#0b3f3a"></circle>
+          </svg>
+        </span>
+        <div class="brand-text">
+          <h1 class="brand-title">
+            <span class="brand-latin">yinjie</span>
+            <span class="brand-sep" aria-hidden="true">·</span>
+            <span class="brand-cn">音阶指板工坊</span>
+          </h1>
+          <p class="brand-sub">音阶地图 · 和弦识别 · 六弦电吉他练习面板</p>
+        </div>
+      </div>
+      <div class="header-side">
+        <span class="tuning-chip" id="tuning-chip" title="当前调弦">
+          <span class="tuning-dot" aria-hidden="true"></span>
+          <span id="tuning-text">标准调弦</span>
+        </span>
+        <span class="status-badge is-loading" id="status-badge">
+          <i class="status-dot" aria-hidden="true"></i>
+          <span id="status-text">正在连接…</span>
+        </span>
+        <button type="button" class="btn btn-ghost btn-sm exit-btn" id="exit-button"
+                title="停止本地服务并退出">退出</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="error-banner" id="error-banner" role="alert" hidden>
+    <span class="error-icon" aria-hidden="true">!</span>
+    <span class="error-text" id="error-text"></span>
+    <button type="button" class="btn btn-ghost" id="retry-button">重新连接</button>
+  </div>
+
+  <main class="app-main">
+    <section class="card toolbar-card" aria-label="指板设置">
+      <div class="toolbar">
+        <div class="field field-mode">
+          <span class="field-label" id="mode-label">模式</span>
+          <div class="segmented" role="group" aria-labelledby="mode-label" id="mode-seg">
+            <button type="button" class="seg-btn" data-mode="scale" aria-pressed="true">音阶模式</button>
+            <button type="button" class="seg-btn" data-mode="chord" aria-pressed="false">和弦模式</button>
+          </div>
+        </div>
+
+        <div class="field field-tuning">
+          <label class="field-label" for="tuning-select">调弦</label>
+          <div class="select-wrap select-wrap-md">
+            <select id="tuning-select" aria-label="选择调弦"></select>
+            <span class="select-chevron" aria-hidden="true"></span>
+          </div>
+        </div>
+
+        <div class="field field-root">
+          <label class="field-label" for="root-select">根音</label>
+          <div class="select-wrap select-wrap-sm">
+            <select id="root-select" aria-label="选择根音"></select>
+            <span class="select-chevron" aria-hidden="true"></span>
+          </div>
+        </div>
+
+        <div class="field field-scale">
+          <label class="field-label" for="scale-select">音阶</label>
+          <div class="select-wrap">
+            <select id="scale-select" aria-label="选择音阶"></select>
+            <span class="select-chevron" aria-hidden="true"></span>
+          </div>
+        </div>
+
+        <div class="field field-range">
+          <span class="field-label" id="range-label">品域</span>
+          <div class="segmented" role="group" aria-labelledby="range-label">
+            <button type="button" class="seg-btn" data-from="0" data-to="12" aria-pressed="false">0 – 12 品</button>
+            <button type="button" class="seg-btn" data-from="0" data-to="24" aria-pressed="true">0 – 24 品</button>
+          </div>
+        </div>
+
+        <div class="field field-display">
+          <label class="field-label" for="display-select">显示</label>
+          <div class="select-wrap select-wrap-sm">
+            <select id="display-select" aria-label="指板显示内容">
+              <option value="notes">音名</option>
+              <option value="degrees">级数</option>
+              <option value="both" selected>两者</option>
+            </select>
+            <span class="select-chevron" aria-hidden="true"></span>
+          </div>
+        </div>
+
+        <div class="field field-spacing">
+          <span class="field-label" id="spacing-label">品格间距</span>
+          <div class="segmented" role="group" aria-labelledby="spacing-label">
+            <button type="button" class="seg-btn" data-spacing="realistic" aria-pressed="true">真实品格</button>
+            <button type="button" class="seg-btn" data-spacing="equal" aria-pressed="false">等宽</button>
+          </div>
+        </div>
+
+        <div class="field field-switch">
+          <span class="field-label">音阶外音</span>
+          <label class="switch" for="nonscale-toggle">
+            <input type="checkbox" id="nonscale-toggle">
+            <span class="switch-track" aria-hidden="true"><span class="switch-thumb"></span></span>
+            <span class="switch-text" id="nonscale-text">隐藏</span>
+          </label>
+        </div>
+
+        <div class="field field-switch">
+          <span class="field-label">声音</span>
+          <label class="switch" for="sound-toggle">
+            <input type="checkbox" id="sound-toggle" checked>
+            <span class="switch-track" aria-hidden="true"><span class="switch-thumb"></span></span>
+            <span class="switch-text" id="sound-text">开启</span>
+          </label>
+        </div>
+
+        <div class="field field-caged" id="caged-view-field">
+          <span class="field-label" id="view-label">音阶视图</span>
+          <div class="segmented" role="group" aria-labelledby="view-label" id="view-seg">
+            <button type="button" class="seg-btn" data-view="overview" aria-pressed="true">总览</button>
+            <button type="button" class="seg-btn" data-view="caged" aria-pressed="false">CAGED 形状</button>
+          </div>
+        </div>
+
+        <div class="field field-caged-part" id="caged-part-field" hidden>
+          <label class="field-label" for="caged-part-select">部分</label>
+          <div class="select-wrap select-wrap-sm">
+            <select id="caged-part-select" aria-label="选择 CAGED 形状部分">
+              <option value="all" selected>全部形状</option>
+              <option value="C">C 形状</option>
+              <option value="A">A 形状</option>
+              <option value="G">G 形状</option>
+              <option value="E">E 形状</option>
+              <option value="D">D 形状</option>
+            </select>
+            <span class="select-chevron" aria-hidden="true"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tuning-editor" id="tuning-editor" hidden>
+        <div class="tuning-editor-head">
+          <span class="field-label">自定义调弦</span>
+          <span class="tuning-editor-hint">按 6 弦 → 1 弦（低音 → 高音）选择空弦音与八度。</span>
+        </div>
+        <div class="tuning-editor-fields" id="custom-tuning-fields"></div>
+        <div class="tuning-editor-actions">
+          <button type="button" class="btn btn-primary btn-sm" id="custom-tuning-apply">应用调弦</button>
+          <button type="button" class="btn btn-ghost btn-sm" id="custom-tuning-reset">恢复标准调弦</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="studio-grid">
+      <section class="card fretboard-card" aria-labelledby="fretboard-title">
+        <div class="card-head">
+          <div class="card-title-group">
+            <h2 id="fretboard-title">指板 · 音阶地图</h2>
+            <p class="card-sub" id="fretboard-sub">自然大调 · 根音 C · 0–24 品</p>
+          </div>
+          <ul class="legend" aria-label="颜色图例">
+            <li><i class="dot dot-root" aria-hidden="true"></i>根音</li>
+            <li><i class="dot dot-scale" aria-hidden="true"></i>音阶内音</li>
+            <li id="legend-selected" hidden><i class="dot dot-selected" aria-hidden="true"></i>选中音</li>
+            <li id="caged-legend" hidden><i class="dot dot-caged" aria-hidden="true"></i>CAGED 把位</li>
+          </ul>
+        </div>
+
+        <div class="canvas-wrap" id="canvas-wrap">
+          <canvas id="fretboard" tabindex="0" role="application"
+                  aria-label="吉他指板：方向键移动焦点，回车或空格选择音，Esc 清空所选"></canvas>
+          <div class="canvas-tooltip" id="canvas-tooltip" role="status" hidden></div>
+          <div class="canvas-overlay" id="canvas-overlay">
+            <span class="spinner" aria-hidden="true"></span>
+            <span id="canvas-overlay-text">正在载入音阶…</span>
+          </div>
+        </div>
+
+        <div class="card-foot fretboard-foot">
+          <p class="hover-info" id="hover-info">悬停查看音名与级数，点击品格即可加入和弦识别。</p>
+          <p class="kbd-hints" aria-label="键盘快捷键">
+            <span><kbd>←</kbd><kbd>→</kbd> 移品</span>
+            <span><kbd>↑</kbd><kbd>↓</kbd> 换弦</span>
+            <span><kbd>Enter</kbd> 选择</span>
+            <span><kbd>Esc</kbd> 清空</span>
+          </p>
+        </div>
+      </section>
+
+      <aside class="sidebar" aria-label="音阶与和弦信息">
+        <section class="card scale-card" aria-labelledby="scale-card-title">
+          <div class="card-head">
+            <div class="card-title-group">
+              <h2 id="scale-card-title">音阶构成</h2>
+              <p class="card-sub" id="scale-sub">正在载入…</p>
+            </div>
+            <span class="badge badge-blue" id="scale-category" hidden></span>
+          </div>
+          <div class="card-body scale-body">
+            <div class="scale-headline">
+              <div class="scale-names">
+                <p class="scale-name" id="scale-name">—</p>
+                <p class="scale-english" id="scale-english"></p>
+              </div>
+              <div class="formula-chips" id="formula-chips" aria-label="音阶级数公式"></div>
+            </div>
+            <div class="note-chips" id="note-chips" aria-label="音阶音名"></div>
+            <div class="interval-list" id="interval-list" aria-label="音程构成"></div>
+          </div>
+        </section>
+
+        <section class="card chord-card" id="chord-card" aria-labelledby="chord-card-title" aria-live="polite">
+          <div class="card-head">
+            <div class="card-title-group">
+              <h2 id="chord-card-title">和弦识别</h2>
+              <p class="card-sub" id="chord-count">尚未选择音</p>
+            </div>
+            <div class="card-head-actions">
+              <span class="identify-spinner" id="identify-spinner" hidden>
+                <span class="spinner spinner-sm" aria-hidden="true"></span>
+              </span>
+              <button type="button" class="btn btn-primary btn-sm" id="play-chord-button" disabled
+                      title="按低弦到高弦依次拨响当前所选和弦音">▶ 播放和弦</button>
+              <button type="button" class="btn btn-ghost btn-sm" id="clear-button" disabled>清空选择</button>
+            </div>
+          </div>
+          <div class="card-body chord-body" id="chord-body">
+            <div class="chord-empty">
+              <span class="chord-empty-icon" aria-hidden="true">♬</span>
+              <p class="chord-empty-title">在指板上点选品格，开始识别和弦</p>
+              <p class="chord-empty-sub">选中的音会标注和弦角色，并给出匹配度、转位与替代和弦建议。</p>
+            </div>
+          </div>
+          <div class="chord-fade" id="chord-fade" aria-hidden="true" hidden></div>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <span>yinjie · 音阶指板工坊</span>
+    <span class="footer-sep" aria-hidden="true">/</span>
+    <span>原生 HTML · CSS · JavaScript，无外部依赖</span>
+    <span class="footer-sep" aria-hidden="true">/</span>
+    <span id="footer-tuning">标准调弦 E–A–D–G–B–E</span>
+  </footer>
+
+  <div class="shutdown-overlay" id="shutdown-overlay" role="alertdialog" aria-modal="true"
+       aria-labelledby="shutdown-title" hidden>
+    <div class="shutdown-card">
+      <span class="shutdown-icon" aria-hidden="true">⏻</span>
+      <h2 class="shutdown-title" id="shutdown-title">服务已停止</h2>
+      <p class="shutdown-text" id="shutdown-text">本地后端服务正在关闭，现在可以关闭此页面了。</p>
+      <p class="shutdown-hint">如需再次使用，请重新运行 yinjie 的启动脚本。</p>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="js/audio.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

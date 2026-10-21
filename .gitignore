@@ -1,0 +1,39 @@
+# ---- Maven 构建产物 ----
+target/
+!target/.gitkeep
+
+# ---- 发布产物与自动下载的运行时（可随时用脚本重建） ----
+dist/
+runtime/
+
+# ---- 运行日志 ----
+*.log
+server.log
+server.err.log
+
+# ---- 临时文件（bat/ps1 的 UTF-8 模板等） ----
+*.tmp
+*.tmp2
+*.utf8.tmp*
+*.swp
+*~
+
+# ---- 验证产物（保留脚本与报告，忽略大体积截图/日志/浏览器输出） ----
+verify/archive/
+verify/**/cdp-out/
+verify/**/*.png
+verify/**/*.log
+
+# ---- IDE / 编辑器 ----
+.idea/
+*.iml
+.vscode/
+*.code-workspace
+.classpath
+.project
+.settings/
+
+# ---- 操作系统 ----
+.DS_Store
+Thumbs.db
+desktop.ini

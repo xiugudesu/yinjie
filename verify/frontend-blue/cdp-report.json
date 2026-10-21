@@ -1,0 +1,488 @@
+{
+  "url": "http://127.0.0.1:8090/",
+  "when": "2026-10-20T13:30:32.965Z",
+  "failures": 0,
+  "results": [
+    {
+      "name": "CSS :root 与 JS COLORS 全量一致（23 个 token）",
+      "status": "PASS",
+      "detail": "23/23 一致"
+    },
+    {
+      "name": "CAGED 五色 CSS 与 JS 一致（5 个 token）",
+      "status": "PASS",
+      "detail": "C=#0d9488 A=#059669 G=#65a30d E=#0891b2 D=#2563eb"
+    },
+    {
+      "name": "配色 token 对比度全部 ≥ WCAG AA (4.5:1)",
+      "status": "PASS",
+      "detail": "最低 5.34:1"
+    },
+    {
+      "name": "页面加载完成并连上后端",
+      "status": "PASS",
+      "detail": "badge=\"已连接\" sub=\"自然大调（Ionian） · 根音 C · 0–24 品 · 音阶模式\""
+    },
+    {
+      "name": "浏览器标题 = yinjie · 音阶指板工坊",
+      "status": "PASS",
+      "detail": "yinjie · 音阶指板工坊"
+    },
+    {
+      "name": "header 品牌为 yinjie / 音阶指板工坊",
+      "status": "PASS",
+      "detail": "yinjie · 音阶指板工坊"
+    },
+    {
+      "name": "meta description 使用新品牌",
+      "status": "PASS",
+      "detail": "yinjie 音阶指板工坊：电吉他音阶可视化与和弦识别工具。"
+    },
+    {
+      "name": "footer 使用新品牌",
+      "status": "PASS",
+      "detail": "yinjie · 音阶指板工坊"
+    },
+    {
+      "name": "退出提示不再出现 fretboard-web",
+      "status": "PASS",
+      "detail": "如需再次使用，请重新运行 yinjie 的启动脚本。"
+    },
+    {
+      "name": "页面 HTML/文本中无旧品牌残留",
+      "status": "PASS",
+      "detail": "html=[] text=[]"
+    },
+    {
+      "name": "muse 装饰层存在且为固定定位",
+      "status": "PASS"
+    },
+    {
+      "name": "muse 不拦截交互（pointer-events:none）",
+      "status": "PASS",
+      "detail": "none / z-index 0"
+    },
+    {
+      "name": "muse 位于内容之下（背景层，z-index 0，不遮挡正文与交互）",
+      "status": "PASS",
+      "detail": "z-index 0"
+    },
+    {
+      "name": "muse 使用 muse.png 并放大铺满整页（宽度 ≥ 视口 120%）",
+      "status": "PASS",
+      "detail": "muse.png\") / 125% auto"
+    },
+    {
+      "name": "muse 透明度在规格内（0.55–0.8；性能优化后移除 multiply 混合模式）",
+      "status": "PASS",
+      "detail": "opacity 0.8 / normal"
+    },
+    {
+      "name": "muse 有径向遮罩渐隐四角",
+      "status": "PASS",
+      "detail": "mask 已生效"
+    },
+    {
+      "name": "muse 覆盖整个视口",
+      "status": "PASS",
+      "detail": "{\"x\":0,\"y\":0,\"w\":1400,\"h\":900}"
+    },
+    {
+      "name": "页面为浅色主题（color-scheme: light + 浅色渐变底）",
+      "status": "PASS",
+      "detail": "color-scheme=light bg=rgb(238, 248, 245)"
+    },
+    {
+      "name": "截图 01-initial-1400.png",
+      "status": "PASS",
+      "detail": "1107490 bytes"
+    },
+    {
+      "name": "CAGED 图例圆点为 teal/emerald/lime/cyan/sky 五色渐变",
+      "status": "PASS",
+      "detail": "linear-gradient(135deg, rgb(13, 148, 136) 0%, rgb(5, 150, 105) 25%, rgb(101, 163, 13) 50%, rgb(8, 145, 178) 75%, rgb(37, 99, 235) 100%)…"
+    },
+    {
+      "name": "CAGED 总览可见（五色把位窗口）",
+      "status": "PASS",
+      "detail": "sub=\"自然大调（Ionian） · 根音 C · 0–24 品 · CAGED 全部形状\" part=all"
+    },
+    {
+      "name": "截图 02-caged-overview-1400.png",
+      "status": "PASS",
+      "detail": "1099778 bytes"
+    },
+    {
+      "name": "CAGED 单形状切换到 C",
+      "status": "PASS",
+      "detail": "自然大调（Ionian） · 根音 C · 0–24 品 · CAGED C 形状"
+    },
+    {
+      "name": "截图 03-caged-c-shape-1400.png",
+      "status": "PASS",
+      "detail": "1071206 bytes"
+    },
+    {
+      "name": "和弦模式点选 x32010 → C 大三和弦（100 分）",
+      "status": "PASS",
+      "detail": "已选 5 个音 · C 自然大调（Ionian） | C / C 大三和弦 / 大三和弦 / 完整匹配 / 原位 / 匹配度 / 100 分 / 转位 / 原位 / 低音 / C · 5弦3品 / 和弦构成音 / 1 / C / 根音 / 3 / E / 大三音 / 5 / G / 纯五音 /"
+    },
+    {
+      "name": "截图 04-chord-x32010-1400.png",
+      "status": "PASS",
+      "detail": "1148519 bytes"
+    },
+    {
+      "name": "切到 Drop D 调弦并重绘指板",
+      "status": "PASS",
+      "detail": "Drop D 调弦 | Drop D 调弦 D–A–D–G–B–E"
+    },
+    {
+      "name": "截图 05-drop-d-1400.png",
+      "status": "PASS",
+      "detail": "1072341 bytes"
+    },
+    {
+      "name": "自定义调弦编辑器展开（6 个弦位）",
+      "status": "PASS",
+      "detail": "D2,A2,D3,G3,B3,E4"
+    },
+    {
+      "name": "截图 06-tuning-editor-1400.png",
+      "status": "PASS",
+      "detail": "1030128 bytes"
+    },
+    {
+      "name": "点击退出后显示遮罩（mock POST /api/shutdown，未真停服务）",
+      "status": "PASS",
+      "detail": "服务已停止 / 已退出 / mock=http://127.0.0.1:8090/api/shutdown"
+    },
+    {
+      "name": "截图 07-exit-overlay-1400.png",
+      "status": "PASS",
+      "detail": "917323 bytes"
+    },
+    {
+      "name": "mock 生效：后端服务未被真实关闭",
+      "status": "PASS",
+      "detail": "GET /api/options -> HTTP 200"
+    },
+    {
+      "name": "≤900px 时 muse 背景仍存在且不遮挡交互",
+      "status": "PASS",
+      "detail": "opacity=0.8 size=125% auto"
+    },
+    {
+      "name": "截图 08-initial-900x700.png",
+      "status": "PASS",
+      "detail": "653063 bytes"
+    },
+    {
+      "name": "900x700 下 x32010 仍识别为 C 大三和弦（100 分）",
+      "status": "PASS",
+      "detail": "已选 5 个音 · C 自然大调（Ionian）"
+    },
+    {
+      "name": "截图 09-chord-900x700.png",
+      "status": "PASS",
+      "detail": "844511 bytes"
+    },
+    {
+      "name": "渲染后正文文字对比度 ≥ 4.5:1（9 个采样）",
+      "status": "PASS",
+      "detail": "最低 5.65:1"
+    },
+    {
+      "name": "9 张验收截图齐全",
+      "status": "PASS",
+      "detail": "9/9"
+    },
+    {
+      "name": "console 0 错误 / 无未捕获异常",
+      "status": "PASS"
+    }
+  ],
+  "consoleErrors": [],
+  "screenshots": [
+    {
+      "name": "01-initial-1400.png",
+      "bytes": 1107490
+    },
+    {
+      "name": "02-caged-overview-1400.png",
+      "bytes": 1099778
+    },
+    {
+      "name": "03-caged-c-shape-1400.png",
+      "bytes": 1071206
+    },
+    {
+      "name": "04-chord-x32010-1400.png",
+      "bytes": 1148519
+    },
+    {
+      "name": "05-drop-d-1400.png",
+      "bytes": 1072341
+    },
+    {
+      "name": "06-tuning-editor-1400.png",
+      "bytes": 1030128
+    },
+    {
+      "name": "07-exit-overlay-1400.png",
+      "bytes": 917323
+    },
+    {
+      "name": "08-initial-900x700.png",
+      "bytes": 653063
+    },
+    {
+      "name": "09-chord-900x700.png",
+      "bytes": 844511
+    }
+  ],
+  "palette": {
+    "cssVars": {
+      "--bg": "#eef8f5",
+      "--header": "#ffffff",
+      "--panel": "#ffffff",
+      "--panel-2": "#f2fbf8",
+      "--panel-hover": "#e6f4ef",
+      "--panel-active": "#d9ece6",
+      "--text": "#083b3a",
+      "--muted": "#3f6b6b",
+      "--muted-dark": "#35615f",
+      "--primary": "#0f766e",
+      "--primary-hover": "#0d9488",
+      "--primary-dark": "#115e59",
+      "--accent": "#047857",
+      "--accent-hover": "#059669",
+      "--accent-dark": "#065f46",
+      "--blue": "#0369a1",
+      "--good": "#047857",
+      "--bad": "#e11d48",
+      "--warning": "#b45309",
+      "--line": "#cfe6e1",
+      "--line-bright": "#a7cfc8",
+      "--focus": "#0284c7",
+      "--brass": "#8fb2ac",
+      "--paper": "#466a6e",
+      "--shadow": "#0f3f42",
+      "--board": "#e9f6f2",
+      "--board-edge": "#b3d5cd",
+      "--caged-c": "#0d9488",
+      "--caged-a": "#059669",
+      "--caged-g": "#65a30d",
+      "--caged-e": "#0891b2",
+      "--caged-d": "#2563eb",
+      "--muse-opacity": "0.8",
+      "--muse-size": "125% auto",
+      "--muse-position": "58% 12%",
+      "--font-ui": "\"PingFang SC\", \"Hiragino Sans GB\", \"Microsoft YaHei\", \"Noto Sans SC\",\n    \"Source Han Sans SC\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+      "--font-display": "\"Avenir Next\", \"Futura\", \"Trebuchet MS\", \"PingFang SC\",\n    \"Microsoft YaHei\", sans-serif",
+      "--font-mono": "\"Cascadia Mono\", \"SFMono-Regular\", Consolas, \"Liberation Mono\", monospace",
+      "--radius-lg": "18px",
+      "--radius-md": "12px",
+      "--radius-sm": "8px",
+      "--card-shadow": "0 26px 64px -40px rgba(15, 63, 66, 0.52),\n    0 1px 0 rgba(255, 255, 255, 0.85) inset"
+    },
+    "jsColors": {
+      "bg": "#eef8f5",
+      "panel": "#ffffff",
+      "panel2": "#f2fbf8",
+      "panelActive": "#d9ece6",
+      "board": "#e9f6f2",
+      "boardEdge": "#b3d5cd",
+      "text": "#083b3a",
+      "muted": "#3f6b6b",
+      "mutedDark": "#35615f",
+      "primary": "#0f766e",
+      "primaryDark": "#115e59",
+      "accent": "#047857",
+      "accentHover": "#059669",
+      "blue": "#0369a1",
+      "good": "#047857",
+      "bad": "#e11d48",
+      "warning": "#b45309",
+      "line": "#cfe6e1",
+      "focus": "#0284c7",
+      "brass": "#8fb2ac",
+      "paper": "#466a6e",
+      "shadow": "#0f3f42"
+    },
+    "jsCaged": {
+      "C": "#0d9488",
+      "A": "#059669",
+      "G": "#65a30d",
+      "E": "#0891b2",
+      "D": "#2563eb"
+    },
+    "mismatches": [],
+    "missing": []
+  },
+  "contrastTokens": [
+    {
+      "fg": "#083b3a",
+      "bg": "#ffffff",
+      "ratio": 12.37,
+      "threshold": 4.5
+    },
+    {
+      "fg": "#083b3a",
+      "bg": "#eef8f5",
+      "ratio": 11.42,
+      "threshold": 4.5
+    },
+    {
+      "fg": "#083b3a",
+      "bg": "#ffffff",
+      "ratio": 12.37,
+      "threshold": 4.5
+    },
+    {
+      "fg": "#083b3a",
+      "bg": "#e9f6f2",
+      "ratio": 11.15,
+      "threshold": 4.5
+    },
+    {
+      "fg": "#3f6b6b",
+      "bg": "#ffffff",
+      "ratio": 5.95,
+      "threshold": 4.5
+    },
+    {
+      "fg": "#3f6b6b",
+      "bg": "#eef8f5",
+      "ratio": 5.5,
+      "threshold": 4.5
+    },
+    {
+      "fg": "#35615f",
+      "bg": "#ffffff",
+      "ratio": 6.94,
+      "threshold": 4.5
+    },
+    {
+      "fg": "#047857",
+      "bg": "#ffffff",
+      "ratio": 5.48,
+      "threshold": 4.5
+    },
+    {
+      "fg": "#0f766e",
+      "bg": "#ffffff",
+      "ratio": 5.47,
+      "threshold": 4.5
+    },
+    {
+      "fg": "#466a6e",
+      "bg": "#e9f6f2",
+      "ratio": 5.34,
+      "threshold": 4.5
+    },
+    {
+      "fg": "#ffffff",
+      "bg": "#0f766e",
+      "ratio": 5.47,
+      "threshold": 4.5
+    },
+    {
+      "fg": "#ffffff",
+      "bg": "#047857",
+      "ratio": 5.48,
+      "threshold": 4.5
+    },
+    {
+      "fg": "#ffffff",
+      "bg": "#0369a1",
+      "ratio": 5.93,
+      "threshold": 4.5
+    }
+  ],
+  "contrastDom": [
+    {
+      "selector": ".brand-sub",
+      "color": "rgb(63, 107, 107)",
+      "background": "rgb(250, 253, 252)",
+      "ratio": 5.82
+    },
+    {
+      "selector": ".brand-cn",
+      "color": "rgb(17, 94, 89)",
+      "background": "rgb(250, 253, 252)",
+      "ratio": 7.42
+    },
+    {
+      "selector": ".card-sub",
+      "color": "rgb(63, 107, 107)",
+      "background": "rgb(244, 250, 248)",
+      "ratio": 5.65
+    },
+    {
+      "selector": ".field-label",
+      "color": "rgb(63, 107, 107)",
+      "background": "rgb(249, 252, 251)",
+      "ratio": 5.79
+    },
+    {
+      "selector": ".legend",
+      "color": "rgb(63, 107, 107)",
+      "background": "rgb(244, 250, 248)",
+      "ratio": 5.65
+    },
+    {
+      "selector": ".site-footer",
+      "color": "rgb(63, 107, 107)",
+      "background": "rgb(244, 251, 249)",
+      "ratio": 5.66
+    },
+    {
+      "selector": ".tuning-chip",
+      "color": "rgb(8, 59, 58)",
+      "background": "rgb(253, 254, 254)",
+      "ratio": 12.27
+    },
+    {
+      "selector": ".status-badge",
+      "color": "rgb(17, 94, 89)",
+      "background": "rgb(253, 254, 254)",
+      "ratio": 7.52
+    },
+    {
+      "selector": ".card-head h2",
+      "color": "rgb(8, 59, 58)",
+      "background": "rgb(244, 250, 248)",
+      "ratio": 11.74
+    }
+  ],
+  "mockedShutdown": "http://127.0.0.1:8090/api/shutdown",
+  "dialogsShown": [
+    "确定退出并停止本地服务吗？\n\n页面会显示「服务已停止」，之后可以关闭此标签页。\n如需再次使用，请重新运行启动脚本。"
+  ],
+  "muse": {
+    "large": {
+      "missing": false,
+      "opacity": "0.8",
+      "mixBlendMode": "normal",
+      "backgroundImage": "url(\"http://127.0.0.1:8090/img/muse.png\")",
+      "backgroundSize": "125% auto",
+      "backgroundPosition": "58% 12%",
+      "pointerEvents": "none",
+      "zIndex": "0",
+      "mask": "radial-gradient(172% 158% at 46% 42%, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 86%, rgba(0, 0, 0, 0.86) 95%, rgba(0, 0, 0, 0) 100%)",
+      "display": "block",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 1400,
+        "h": 900
+      }
+    },
+    "small": {
+      "opacity": "0.8",
+      "backgroundSize": "125% auto",
+      "display": "block"
+    }
+  }
+}
